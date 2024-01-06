@@ -2,27 +2,26 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_saver/gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:file_picker/file_picker.dart';
 import 'dart:async';
-import 'dart:io';
 
-import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter/scheduler.dart';
-import 'package:video_player/video_player.dart';
 
 List<CameraDescription> _cameras = <CameraDescription>[];
 
 Future<void> main() async {
-   try {
+  try {
     WidgetsFlutterBinding.ensureInitialized();
     _cameras = await availableCameras();
   } on CameraException catch (e) {
     _logError(e.code, e.description);
   }
-  
+
   runApp(const MyApp());
 }
 
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Video Player',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -53,14 +52,34 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Video Player")),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+          leading: FloatingActionButton.extended(onPressed: () {
+            exit(0);
+          },
+          icon: Icon(Icons.exit_to_app), label: Text(""),
+           backgroundColor: Colors.transparent,elevation: 0, )
+           ,
+          title: Text(
+            "Video Player",
+            style: TextStyle(
+                fontFamily: 'Quicksand',
+                fontSize: 40,
+                fontWeight: FontWeight.w100),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.white),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => CameraApp()));
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => CameraApp()));
         },
-        label: Text("Camera"),
-        icon: Icon(Icons.camera),
+        label: Text("Camera",
+            style: TextStyle(
+                fontFamily: 'Quicksand',
+                fontSize: 20,
+                fontWeight: FontWeight.w100)),
+        icon: Icon(Icons.camera_enhance),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -68,14 +87,255 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               padding: const EdgeInsets.only(top: 100.0),
             ),
-            AspectRatio(
-              aspectRatio: 1,
-              child: vplayer(
-                source:
-                    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-              ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
             ),
-            // Add more AspectRatio widgets as needed
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
+            Container(
+              padding: const EdgeInsets.only(top: 100.0),
+            ),
+            Container(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: vplayer(
+                    source:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+                  ),
+                )),
           ],
         ),
       ),
@@ -99,9 +359,7 @@ class _vplayerState extends State<vplayer> {
   void initState() {
     super.initState();
 
-    _controller1 = VideoPlayerController.network(
-      widget.source,
-    );
+    _controller1 = VideoPlayerController.networkUrl(Uri.parse(widget.source));
 
     _controller1.addListener(() {
       setState(() {});
@@ -118,33 +376,37 @@ class _vplayerState extends State<vplayer> {
     return Column(
       children: [
         Expanded(
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              VideoPlayer(_controller1),
-              VideoProgressIndicator(_controller1, allowScrubbing: true),
-              Visibility(
-                visible: true,
-                child: FloatingActionButton(
-                  backgroundColor: Colors.transparent,
-                  onPressed: () {
-                    setState(() {
-                      if (_controller1.value.isPlaying) {
-                        _controller1.pause();
-                      } else {
-                        _controller1.play();
-                      }
-                    });
-                  },
-                  child: Icon(
-                    _controller1.value.isPlaying
-                        ? Icons.pause
-                        : Icons.play_arrow,
-                    color: Colors.white,
+          child: ClipRRect(
+            borderRadius:
+                BorderRadius.circular(20.0), // Adjust the radius as needed
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                VideoPlayer(_controller1),
+                VideoProgressIndicator(_controller1, allowScrubbing: true),
+                Visibility(
+                  visible: true,
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.transparent,
+                    onPressed: () {
+                      setState(() {
+                        if (_controller1.value.isPlaying) {
+                          _controller1.pause();
+                        } else {
+                          _controller1.play();
+                        }
+                      });
+                    },
+                    child: Icon(
+                      _controller1.value.isPlaying
+                          ? Icons.pause
+                          : Icons.play_arrow,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Container(
@@ -193,12 +455,9 @@ class _vplayerState extends State<vplayer> {
   }
 }
 
-
 // Copyright 2013 The Flutter Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
-
 
 /// Camera example home widget.
 class CameraExampleHome extends StatefulWidget {
@@ -237,6 +496,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   CameraController? controller;
   XFile? imageFile;
   XFile? videoFile;
+  File? videofile_;
+  Directory? download_;
   VideoPlayerController? videoController;
   VoidCallback? videoPlayerListener;
   bool enableAudio = true;
@@ -318,7 +579,15 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Camera e'),
+        leading: BackButton(
+            onPressed: () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => MyHomePage()))),
+        title: const Text("Camera",
+            style: TextStyle(
+                fontFamily: 'Quicksand',
+                fontSize: 40,
+                fontWeight: FontWeight.w100)),
+        centerTitle: true,
       ),
       body: Column(
         children: <Widget>[
@@ -1000,6 +1269,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
       if (file != null) {
         showInSnackBar('Video recorded to ${file.path}');
         videoFile = file;
+
         _startVideoPlayer();
       }
     });
@@ -1044,6 +1314,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
 
   Future<void> startVideoRecording() async {
     final CameraController? cameraController = controller;
+    final Directory? downloadsDir = await getDownloadsDirectory();
+    download_ = downloadsDir;
 
     if (cameraController == null || !cameraController.value.isInitialized) {
       showInSnackBar('Error: select a camera first.');
@@ -1071,7 +1343,10 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     }
 
     try {
-      return cameraController.stopVideoRecording();
+      final video = await cameraController.stopVideoRecording();
+      //video.saveTo(download_!.path);
+      await GallerySaver.saveVideo(video.path);
+      return video;
     } on CameraException catch (e) {
       _showCameraException(e);
       return null;
@@ -1208,6 +1483,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
 
     try {
       final XFile file = await cameraController.takePicture();
+      await GallerySaver.saveImage(file.path);
       return file;
     } on CameraException catch (e) {
       _showCameraException(e);
@@ -1233,4 +1509,3 @@ class CameraApp extends StatelessWidget {
     );
   }
 }
-
